@@ -1,0 +1,125 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd">
+
+    <!-- Таблица characteristics -->
+    <changeSet id="2" author="admin">
+        <createTable tableName="characteristics">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="value" type="varchar(255)"/>
+            <column name="product_id" type="integer"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Таблица order -->
+    <changeSet id="3" author="admin">
+        <createTable tableName="order">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="integer"/>
+            <column name="price" type="bigint"/>
+            <column name="date" type="date"/>
+            <column name="count" type="integer"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Таблица product -->
+    <changeSet id="4" author="admin">
+        <createTable tableName="product">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="desc" type="varchar(255)"/>
+            <column name="price" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category" type="varchar(255)"/>
+            <column name="img" type="varchar(255)"/>
+            <column name="rating" type="integer"/>
+            <column name="color" type="varchar(255)"/>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="characteristics" baseColumnNames="product_id"
+                referencedTableName="product" referencedColumnNames="id"
+                constraintName="fk_characteristics_product"/>
+    </changeSet>
+
+    <!-- Таблица tag -->
+    <changeSet id="5" author="admin">
+        <createTable tableName="tag">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Таблица users -->
+    <changeSet id="6" author="admin">
+        <createTable tableName="users">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="login" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint
+                baseTableName="order" baseColumnNames="user_id"
+                referencedTableName="users" referencedColumnNames="id"
+                constraintName="fk_order_user"/>
+    </changeSet>
+
+    <!-- Связь многие ко многим (order - product) -->
+    <changeSet id="7" author="admin">
+        <createTable tableName="order_product">
+            <column name="order_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="order_product" baseColumnNames="order_id"
+                referencedTableName="order" referencedColumnNames="id"
+                constraintName="fk_order_product_order"/>
+        <addForeignKeyConstraint
+                baseTableName="order_product" baseColumnNames="product_id"
+                referencedTableName="product" referencedColumnNames="id"
+                constraintName="fk_order_product_product"/>
+    </changeSet>
+
+    <changeSet id="8" author="admin">
+        <createTable tableName="tag_product">
+            <column name="tag_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="tag_product" baseColumnNames="tag_id"
+                referencedTableName="tag" referencedColumnNames="id"
+                constraintName="fk_tag_product_tag"/>
+        <addForeignKeyConstraint
+                baseTableName="tag_product" baseColumnNames="product_id"
+                referencedTableName="product" referencedColumnNames="id"
+                constraintName="fk_tag_product_product"/>
+    </changeSet>
+</databaseChangeLog>
