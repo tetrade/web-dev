@@ -122,4 +122,288 @@
                 referencedTableName="product" referencedColumnNames="id"
                 constraintName="fk_tag_product_product"/>
     </changeSet>
+
+    <changeSet id="9" author="admin">
+        <insert tableName="product">
+            <column name="id" value="1"/>
+            <column name="name" value="Iphone 18 PRO"/>
+            <column name="desc" value="Супер крутой телефон !!!"/>
+            <column name="price" value="77000"/>
+            <column name="category" value="Телефон"/>
+            <column name="img" value="/img_6.png"/>
+            <column name="rating" value="2"/>
+            <column name="color" value="Красный"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="id" value="2"/>
+            <column name="name" value="Xiaomi K70 POCO"/>
+            <column name="desc" value="Телефон на все случаи жизни"/>
+            <column name="price" value="50000"/>
+            <column name="category" value="Телефон"/>
+            <column name="img" value="/img_5.png"/>
+            <column name="rating" value="5"/>
+            <column name="color" value="Зеленый"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="id" value="3"/>
+            <column name="name" value="Xiaomi K80 POCO"/>
+            <column name="desc" value="Телефон на все случаи жизни"/>
+            <column name="price" value="60000"/>
+            <column name="category" value="Телефон"/>
+            <column name="img" value="/img_5.png"/>
+            <column name="rating" value="4"/>
+            <column name="color" value="Зеленый"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="id" value="4"/>
+            <column name="name" value="Кирпич"/>
+            <column name="desc" value="Ну тут все понятно"/>
+            <column name="price" value="500"/>
+            <column name="category" value="Прочее"/>
+            <column name="img" value="/img_4.png"/>
+            <column name="rating" value="3"/>
+            <column name="color" value="Кирпичный"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="id" value="5"/>
+            <column name="name" value="DOTA PLUS"/>
+            <column name="desc" value="Подписка чтобы выиграть игру"/>
+            <column name="price" value="400"/>
+            <column name="category" value="Прочее"/>
+            <column name="img" value="/img_3.png"/>
+            <column name="rating" value="4"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="id" value="6"/>
+            <column name="name" value="Coca-cola"/>
+            <column name="desc" value="Охлаждает как всегда отлично!"/>
+            <column name="price" value="100"/>
+            <column name="category" value="Продукты"/>
+            <column name="img" value="/img_2.png"/>
+            <column name="rating" value="5"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="id" value="7"/>
+            <column name="name" value="Лапка липкая"/>
+            <column name="desc" value="Идельный антистресс"/>
+            <column name="price" value="250"/>
+            <column name="category" value="Антистресс"/>
+            <column name="img" value="/img_1.png"/>
+            <column name="rating" value="5"/>
+            <column name="color" value="Розовый"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="id" value="8"/>
+            <column name="name" value="Лапка черненькая"/>
+            <column name="desc" value="Идельный антистресс"/>
+            <column name="price" value="250"/>
+            <column name="category" value="Антистресс"/>
+            <column name="img" value="/img_1.png"/>
+            <column name="rating" value="2"/>
+            <column name="color" value="Черный"/>
+        </insert>
+
+        <insert tableName="product">
+            <column name="id" value="9"/>
+            <column name="name" value="Iphone 22 PRO"/>
+            <column name="desc" value="ВАТАФАААК"/>
+            <column name="price" value="100000"/>
+            <column name="category" value="Телефон"/>
+            <column name="img" value="/img_6.png"/>
+            <column name="rating" value="2"/>
+            <column name="color" value="Черный"/>
+        </insert>
+
+        <!-- Add additional products here -->
+    </changeSet>
+
+    <changeSet id="10" author="admin">
+        <insert tableName="tag">
+            <column name="id" value="1"/>
+            <column name="name" value="hit"/>
+        </insert>
+        <insert tableName="tag">
+            <column name="id" value="2"/>
+            <column name="name" value="new"/>
+        </insert>
+
+        <!-- Add additional tags here -->
+
+        <insert tableName="tag_product">
+            <column name="tag_id" value="1"/>
+            <column name="product_id" value="1"/>
+        </insert>
+        <insert tableName="tag_product">
+            <column name="tag_id" value="1"/>
+            <column name="product_id" value="2"/>
+        </insert>
+        <insert tableName="tag_product">
+            <column name="tag_id" value="2"/>
+            <column name="product_id" value="3"/>
+        </insert>
+        <insert tableName="tag_product">
+            <column name="tag_id" value="1"/>
+            <column name="product_id" value="6"/>
+        </insert>
+        <insert tableName="tag_product">
+            <column name="tag_id" value="2"/>
+            <column name="product_id" value="7"/>
+        </insert>
+        <insert tableName="tag_product">
+            <column name="tag_id" value="2"/>
+            <column name="product_id" value="8"/>
+        </insert>
+        <insert tableName="tag_product">
+            <column name="tag_id" value="2"/>
+            <column name="product_id" value="9"/>
+        </insert>
+        <insert tableName="tag_product">
+            <column name="tag_id" value="1"/>
+            <column name="product_id" value="7"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="11" author="admin">
+        <!-- Характеристики для Iphone 18 PRO -->
+        <insert tableName="characteristics">
+            <column name="id" value="1"/>
+            <column name="name" value="Вес"/>
+            <column name="value" value="200г"/>
+            <column name="product_id" value="1"/>
+        </insert>
+        <insert tableName="characteristics">
+            <column name="id" value="2"/>
+            <column name="name" value="Размер экрана"/>
+            <column name="value" value="6.1 дюйма"/>
+            <column name="product_id" value="1"/>
+        </insert>
+
+        <!-- Характеристики для Xiaomi K70 POCO -->
+        <insert tableName="characteristics">
+            <column name="id" value="3"/>
+            <column name="name" value="Вес"/>
+            <column name="value" value="180г"/>
+            <column name="product_id" value="2"/>
+        </insert>
+        <insert tableName="characteristics">
+            <column name="id" value="4"/>
+            <column name="name" value="Батарея"/>
+            <column name="value" value="5000мАч"/>
+            <column name="product_id" value="2"/>
+        </insert>
+
+        <!-- Характеристики для Xiaomi K80 POCO -->
+        <insert tableName="characteristics">
+            <column name="id" value="5"/>
+            <column name="name" value="Вес"/>
+            <column name="value" value="185г"/>
+            <column name="product_id" value="3"/>
+        </insert>
+        <insert tableName="characteristics">
+            <column name="id" value="6"/>
+            <column name="name" value="Разрешение экрана"/>
+            <column name="value" value="1440x3200"/>
+            <column name="product_id" value="3"/>
+        </insert>
+
+        <!-- Характеристики для Кирпич -->
+        <insert tableName="characteristics">
+            <column name="id" value="7"/>
+            <column name="name" value="Вес"/>
+            <column name="value" value="3кг"/>
+            <column name="product_id" value="4"/>
+        </insert>
+        <insert tableName="characteristics">
+            <column name="id" value="8"/>
+            <column name="name" value="Материал"/>
+            <column name="value" value="Глина"/>
+            <column name="product_id" value="4"/>
+        </insert>
+
+        <!-- Характеристики для DOTA PLUS -->
+        <insert tableName="characteristics">
+            <column name="id" value="9"/>
+            <column name="name" value="Длительность"/>
+            <column name="value" value="1 месяц"/>
+            <column name="product_id" value="5"/>
+        </insert>
+
+        <!-- Характеристики для Coca-cola -->
+        <insert tableName="characteristics">
+            <column name="id" value="10"/>
+            <column name="name" value="Объем"/>
+            <column name="value" value="1л"/>
+            <column name="product_id" value="6"/>
+        </insert>
+
+        <!-- Характеристики для Лапка липкая -->
+        <insert tableName="characteristics">
+            <column name="id" value="11"/>
+            <column name="name" value="Материал"/>
+            <column name="value" value="Силикон"/>
+            <column name="product_id" value="7"/>
+        </insert>
+
+        <!-- Характеристики для Лапка черненькая -->
+        <insert tableName="characteristics">
+            <column name="id" value="12"/>
+            <column name="name" value="Материал"/>
+            <column name="value" value="Силикон"/>
+            <column name="product_id" value="8"/>
+        </insert>
+
+        <!-- Характеристики для Iphone 22 PRO -->
+        <insert tableName="characteristics">
+            <column name="id" value="13"/>
+            <column name="name" value="Вес"/>
+            <column name="value" value="210г"/>
+            <column name="product_id" value="9"/>
+        </insert>
+        <insert tableName="characteristics">
+            <column name="id" value="14"/>
+            <column name="name" value="Процессор"/>
+            <column name="value" value="A18 Bionic"/>
+            <column name="product_id" value="9"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20" author="piatlin2002@gmail.com">
+        <renameTable oldTableName="order" newTableName="ordering"/>
+    </changeSet>
+
+    <changeSet id="30" author="piatlin2002@gmail.com">
+        <insert tableName="users">
+            <column name="id" value="1"/>
+            <column name="login" value="user"/>
+            <column name="password" value="$2a$10$NovoWskNZALcVVjhpRsaOO/8EweDIqLV0M4.Xg0AZNEMTP.7EYQmm"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="40" author="piatlin2002@gmail.com">
+        <insert tableName="product">
+            <column name="id" value="10"/>
+            <column name="name" value="Sprite"/>
+            <column name="desc" value="Охлаждает как всегда отлично!"/>
+            <column name="price" value="120"/>
+            <column name="category" value="Продукты"/>
+            <column name="img" value="/img_2.png"/>
+            <column name="rating" value="5"/>
+        </insert>
+        <insert tableName="product">
+            <column name="id" value="11"/>
+            <column name="name" value="Fanta"/>
+            <column name="desc" value="Охлаждает как всегда отлично!"/>
+            <column name="price" value="110"/>
+            <column name="category" value="Продукты"/>
+            <column name="img" value="/img_2.png"/>
+            <column name="rating" value="5"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>

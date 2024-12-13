@@ -32,6 +32,6 @@ public class User extends Ident {
 
     private String password;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
     private Set<Order> orders = new HashSet<>();
 }

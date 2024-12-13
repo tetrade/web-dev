@@ -10,7 +10,9 @@ import java.util.stream.Collectors;
 
 import ru.nicetu.predator.u.modules.launch.chart.dto.PageResponse;
 import ru.nicetu.predator.u.modules.launch.chart.dto.ProductResponse;
+import ru.nicetu.predator.u.modules.launch.chart.entities.Attribute;
 import ru.nicetu.predator.u.modules.launch.chart.entities.Product;
+import ru.nicetu.predator.u.modules.launch.chart.repository.AttributeRepository;
 import ru.nicetu.predator.u.modules.launch.chart.repository.ProductRepository;
 
 @Service
@@ -18,6 +20,7 @@ import ru.nicetu.predator.u.modules.launch.chart.repository.ProductRepository;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final AttributeRepository attributeRepository;
 
     public Product getProduct(int id) {
         return productRepository.findById(id).orElse(null);

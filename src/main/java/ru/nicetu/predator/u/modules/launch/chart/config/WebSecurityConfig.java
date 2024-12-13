@@ -16,6 +16,7 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,7 +38,7 @@ import ru.nicetu.predator.u.modules.launch.chart.config.jwt.JwtUtils;
 public class WebSecurityConfig {
 
     private static final String[] NOT_FILTER_REQUEST = {
-            "/api/v1/auth/**", "/error"
+            "/login", "/error"
     };
 
     private final JwtUtils jwtUtils;
@@ -86,7 +87,7 @@ public class WebSecurityConfig {
         http.addFilterAt(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class);
 
         http.csrf(AbstractHttpConfigurer::disable);
-        http.cors(AbstractHttpConfigurer::disable);
+        http.cors(Customizer.withDefaults());
 
         http.sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
